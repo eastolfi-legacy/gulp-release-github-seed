@@ -72,7 +72,7 @@ gulp.task('create-new-tag', function (cb) {
 gulp.task('release:github', function (done) {
     conventionalGithubReleaser({
         type: "oauth",
-        token: 'bb2128b43719d95467e61a861c079152986ef9ba' // change this to your own GitHub token or use an environment variable
+        token: 'TOKEN' // change this to your own GitHub token or use an environment variable
     }, {
         preset: 'angular' // Or to any other commit message convention you use.
     }, done);

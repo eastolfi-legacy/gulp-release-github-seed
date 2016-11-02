@@ -15,7 +15,7 @@ gulp.task('doc:api:full', function () {
 });
 
 gulp.task('doc:api:files', function () {
-    return gulp.src(['src/JSW-Logger.js'])
+    return gulp.src(['src/app.js'])         // CHANGE: Put your documented files
         .pipe(gulpJsdoc2md(/*{ template: fs.readFileSync('./readme.hbs', 'utf8') }*/))
         .on('error', function (err) {
             gutil.log(gutil.colors.red('jsdoc2md failed'), err.message);
@@ -41,10 +41,10 @@ gulp.task('changelog', function () {
         preset: 'angular',
         outputUnreleased: true,
         releaseCount: 0
-    }, {
+    }, {    // CHANGE: Put your github repository info
         host: 'https://github.com',
-        owner: 'EastolfiWebDev',
-        repository: 'JSW-Logger'
+        owner: 'GITHUB_USER',
+        repository: 'REPOSITORY'
     }))
     .pipe(gulp.dest('./'));
 });

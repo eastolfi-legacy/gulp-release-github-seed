@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var del = require('del');
 var babel = require('gulp-babel');
 var minify = require('gulp-minify');
-var browserify = require("browserify");
+var browserify = require('browserify');
 var sourcemaps = require('gulp-sourcemaps');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
@@ -25,24 +25,24 @@ gulp.task('build:app', ['clean:lib'], function () {
 
 gulp.task('bundle:app', ['build:app'], function() {
     return browserify({
-        entries: ['./index.js'],
+        entries: ['./index.js'],    // CHANGE: Put your project entry file
         debug: true
     })
-    .transform("babelify", {presets: ["es2015", "react"]})
+    .transform('babelify', {presets: ['es2015', 'react']})
     .bundle()
-    .pipe(source('./jsw-logger.js'))
+    .pipe(source('./app.js'))       // CHANGE: The name of browser-ready file
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./dist'));         // CHANGE: Where your file will be
 });
 
 gulp.task('compress:app', function() {
-    return gulp.src('dist/jsw-logger.js')
+    return gulp.src('dist/app.js')      // CHANGE: The file to compress
         .pipe(minify({
             ext:{
                 min:'.min.js'
             }
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist'));       // CHANGE: The minimified file destination
 });
