@@ -34,7 +34,7 @@ Gulp releasing dependencies
 npm install -D gulp-bump minimist conventional-github-releaser
 ```
 
-And the you can init your new repository:
+And then you can init your new repository:
 ```bash
 git init
 ```
